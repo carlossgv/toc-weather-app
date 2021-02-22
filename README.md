@@ -1,2 +1,2 @@
 # toc-weather-app
-The Odin Project - Weather App
+Weather App - The Odin Project 
