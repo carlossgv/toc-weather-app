@@ -1,0 +1,27 @@
+{
+  "name": "weather-app-toc",
+  "version": "1.0.0",
+  "description": "Weather App - The Odin Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack serve",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlossgv/weather-app-toc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlossgv/weather-app-toc/issues"
+  },
+  "homepage": "https://github.com/carlossgv/weather-app-toc#readme",
+  "devDependencies": {
+    "webpack": "^5.23.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
