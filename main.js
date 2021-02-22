@@ -16,7 +16,7 @@
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ \"./weather/utils.js\");\n\n\n(0,_utils__WEBPACK_IMPORTED_MODULE_0__.default)('Carlos Santiago Gonzalez');\n\nif (false) {}\n\n\n//# sourceURL=webpack://weather-app-toc/./weather/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ \"./weather/utils.js\");\n\n\nconst form = document.querySelector('form');\nconst input = document.querySelector('input');\nconst loader = document.querySelector('.loader');\nconst main = document.querySelector('.main');\nloader.style.display = 'none';\n\nform.addEventListener('submit', function (e) {\n  main.style.display = 'none';\n  loader.style.display = 'block';\n  (0,_utils__WEBPACK_IMPORTED_MODULE_0__.default)(input.value).then((weather) => {\n    loader.style.display = 'none';\n    for (let prop in weather) {\n      let div = document.querySelector(`.${prop}_div`);\n      div.innerHTML = '';\n\n      let h3 = document.createElement('h3');\n      h3.innerHTML = `${weather[prop]}`;\n\n      div.append(h3);\n      main.append(div);\n\n      console.log(prop, weather[prop]);\n    }\n    main.style.display = 'block';\n  });\n\n  input.value = '';\n\n  e.preventDefault();\n});\n\nif (false) {}\n\n\n//# sourceURL=webpack://weather-app-toc/./weather/index.js?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _uti
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction testFunc(name) {\n  console.log(name);\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (testFunc);\n\n\n//# sourceURL=webpack://weather-app-toc/./weather/utils.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst fetchWeather = async (city) => {\n  const response = await fetch(\n    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=cc2320d0a9fdacdd2495b7390e523460`\n  );\n  const weatherInfo = await response.json();\n\n  return weatherInfo;\n};\n\nconst getWeather = async (city) => {\n  let weatherInfo = await fetchWeather(city);\n  const weather = new Weather(weatherInfo);\n\n  return weather;\n};\n\nclass Weather {\n  constructor(weatherInfo) {\n    this.name = weatherInfo.name;\n    this.temp = `Temp: ${weatherInfo.main.temp}°C`;\n    this.temp_max = `Max. Temp: ${weatherInfo.main.temp_max}°C`;\n    this.temp_min = `Min. Temp: ${weatherInfo.main.temp_min}°C`;\n    this.humidity = `Humidity: ${weatherInfo.main.humidity}%`;\n    this.weather_main = weatherInfo.weather[0].main;\n    // this.weather_icon = weatherInfo.weather[0].icon;\n  }\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getWeather);\n\n\n//# sourceURL=webpack://weather-app-toc/./weather/utils.js?");
 
 /***/ })
 
